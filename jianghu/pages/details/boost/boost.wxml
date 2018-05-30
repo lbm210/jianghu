@@ -1,0 +1,19 @@
+<!--pages/details/boost/boost.wxml-->
+<view class="container">
+  <view class="tit">
+    已有<text>{{230}}人</text>帮TA助推<text>300次</text>
+  </view>
+  <block wx:for="{{itemData}}" wx:key="">
+    <view class="item-tit disflex a-c">
+      <image class="tx" src="{{item.imgUrl}}" mode="aspectFit"/>
+      <view class="disflex fd-c">
+        <view class="name">{{item.name}}<text>帮助了TA</text><text class="red">5次</text></view>
+        <text class="time">{{item.time}}</text>
+      </view>
+      <view class="item-money" >
+        +{{item.money}}元
+      </view>
+    </view>
+  </block>
+</view>
+

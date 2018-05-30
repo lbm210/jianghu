@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/details/details",
+    "pages/details/moreABM/moreABM",
+    "pages/dtpicker/dtpicker",
+    "pages/details/boost/boost",
+    "pages/fabu/fabu",
+    "pages/home/home",
+    "pages/login/login",
+    "pages/networkERR/networkERR",
+    "pages/index/citylist/citylist",
+    "pages/fabu/creatcard/creatcard",
+    "pages/fabu/secondEdit/secondEdit",
+    "pages/home/headline/headline",
+    "pages/home/costheadline/costheadline",
+    "pages/home/card/card",
+    "pages/home/helped/helped",
+    "pages/home/addboost/addboost",
+    "pages/home/wallet/wallet",
+    "pages/details/addboostmoney/addboostmoney",
+    "pages/login/register/register",
+    "pages/login/retrieve/retrieve"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#30c180",
+    "navigationBarTitleText": "江湖救急",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#30c180",
+    "backgroundColor": "#f5f5f5",
+    "borderStyle": "#e2e2e2",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/over.png",
+        "selectedIconPath": "images/over2.png"
+      },
+      {
+        "pagePath": "pages/fabu/fabu",
+        "text": "江湖救急",
+        "iconPath": "images/jia.png",
+        "selectedIconPath": "images/jia2.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "images/tx.png",
+        "selectedIconPath": "images/tx2.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+<view class="container">
+  <view wx:if="{{!code_OK}}">
+    <view class="int-box">
+      <view class="phone disflex a-c">
+        <input class="flexn" type="text" bindinput="getPhone" placeholder="注册手机号" placeholder-class="phd" auto-focus/>
+        <button bindtap="getVerifyingCode" disabled="{{disabled}}">
+          {{text}}
+        </button>
+      </view>
+      <view class="verifying-code disflex a-c">
+        <input class="flexn" type="text" bindinput="setVerifyingCode" placeholder="输入验证码" placeholder-class="phd"/>
+      </view>
+    </view>
+    <view class="login-box">
+      <button class="login"  loading="{{false}}"  bindtap="next" disabled="{{loginDisabled}}">下一步</button>
+    </view>
+  </view>
+  <view wx:else="{{code_OK}}">
+    <view class="int-box">
+      <view class="phone disflex a-c">
+        <input class="flexn" type="text" bindinput="setPassword" password placeholder="新密码" placeholder-class="phd"/>
+      </view>
+      <view class="verifying-code disflex a-c">
+        <input class="flexn" type="text" bindinput="setPasswordS" password placeholder="再次输入新密码" placeholder-class="phd"/>
+      </view>
+    </view>
+    <view class="login-box">
+      <button class="login" bindtap="confirm">确定</button>
+    </view>
+  </view>
+</view>

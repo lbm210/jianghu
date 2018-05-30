@@ -1,0 +1,91 @@
+<!--index.wxml-->
+<import src="../template/template.wxml" />
+<view class="container a-c">
+  <image class="banner" src="../../images/banner.png" mode="widthFix"/>
+  
+  <view class="swiper-box disflex a-c">
+    <image src="../../images/huo.png" mode="widthFix"/>
+    <text>江湖动态</text>
+     <swiper class="flexn" indicator-dots="{{dynamic.indicatorDots}}" autoplay="{{dynamic.autoplay}}" interval="{{dynamic.interval}}" duration="{{dynamic.duration}}" vertical="{{dynamic.vertical}}" circular="{{dynamic.circular}}">
+      <block wx:for="{{dynamic.text}}" wx:key="_dynamic">
+        <swiper-item>
+          <text class="ellipsis">{{item}}</text>
+        </swiper-item>
+      </block>
+    </swiper> 
+    <view class="dt-info">
+      详情
+    </view>
+  </view>
+  <!-- 数据 -->
+  <view class="inda-list disflex mt20">
+    <block wx:for="{{indaList}}" wx:key="_indaList">
+      <view class="inda-items{{index+1}} flexn disflex a-c">
+        <text>{{item.tit}}</text>
+        <text class="f60">{{item.nbm}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 求助列表 -->
+  <block wx:for="{{infoData}}" wx:key="">
+    <view class="info-list {{index==0?'p0':''}}" id="{{item.id}}" bindtap="goInfo">
+      <view class="info-tit" wx:if="{{index == 0}}">
+        正在求助
+      </view>
+      <view class="info-item">
+        <view class="item-tit disflex">
+          <image class="tx" src="{{item.txUrl}}" mode="aspectFit"/>
+          <view class="disflex fd-c">
+            <text class="name">{{item.name}}</text>
+            <text class="time">{{item.time}}</text>
+          </view>
+          <view class="item-btn {{item.state?'btn-end':''}}" >
+            {{item.state?'已帮助':'求帮助'}}
+          </view>
+        </view>
+        <text class="txt-tit">{{item.txt}}</text>
+        <image class="in-img" src="{{item.ioUrl}}" mode="widthFix"/>
+        <view class="hp-pel disflex">
+          <block wx:for="{{item.hpImglist}}" wx:key="_hpList">
+            <image class="hp-item" src="{{item}}" mode="aspectFit" wx:if="{{index < 5}}"/>
+          </block>
+          <view class="hp-more" wx:if="{{item.hpImglist.length > 5}}">...</view>
+          <view class="hp-nbm">已有<text>{{item.nbm}}</text>人献爱心</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 定位 -->
+  <view class="address" id="{{addressId}}" bindtap="getCity">
+    <view class="iconfont icon-map"></view>
+    <view class="add-info">
+      {{address}}
+    </view>
+  </view>
+  <!-- 实时助推、发布信息 -->
+  <view class="zt">
+    <swiper indicator-dots="{{false}}" autoplay="true" interval="{{3000}}" duration="{{1000}}" vertical="{{true}}" circular="{{true}}">
+      <block wx:for="{{ztList}}" wx:key="_ztList">
+        <swiper-item class="disflex a-c">
+          <image src="{{item.imgUrl}}" mode="widthFix" />
+          <text>{{item.name}}完成一次爱心助推</text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="fb">
+    <swiper indicator-dots="{{false}}" autoplay="true" interval="{{5000}}" duration="{{1000}}" vertical="{{true}}" circular="{{true}}">
+      <block wx:for="{{fbList}}" wx:key="_ftList">
+        <swiper-item class="disflex a-c">
+          <image src="{{item.imgUrl}}" mode="widthFix" />
+          <text>{{item.name}}发布一条江湖救急</text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 加载 -->
+  <view class="loading disflex a-c j-c"   wx:if="{{load}}">
+    <image src="../../images/ajax-loader.gif" mode="widthFix"  wx:if="{{loading}}"/>
+    <text>{{loadingTxt}}</text>
+  </view>
+</view>

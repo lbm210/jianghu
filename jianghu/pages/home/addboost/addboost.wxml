@@ -1,0 +1,32 @@
+<import src="../../template/template" />
+<view class="container">
+  <view class="money-box">
+    <text>请选择加助金额</text>
+    <view class="money-ul disflex j-b">
+      <block wx:for="{{moneyData}}" wx:key="">
+        <view class="money-item {{item.on?'':'active'}}" id="{{item.id}}" bindtap="getMoney">
+          {{item.nmb}}元
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="fill-int">
+    <view class="disflex j-b a-c fill-item">
+      <text>加助计算器</text>
+      <view class="calc">您预计可帮TA增加<text>500次</text>分享转发</view>
+    </view>
+    <view class="disflex j-b a-c fill-item">
+      <text>零钱抵扣</text>
+      <text class="flexn txt">剩余可用零钱￥{{20.00}}</text>
+      <view class="switch {{checked?'on':''}} disflex a-c" bindtap="switchSmallChange">
+        <view class="circular {{checked?'on':''}}"></view>
+      </view>
+    </view>
+  </view>
+  <view class="foot">
+    <view class="payment">
+      立即支付
+    </view>
+  </view>
+  <template is="tab-list"></template>
+</view>

@@ -1,0 +1,16 @@
+.money-box{width:100%;background:#30c187;padding:15rpx 26rpx 0;box-sizing:border-box;}
+.money-box>text{font-size:24rpx;line-height:24rpx;color:#fff;}
+.money-ul{width:100%;padding:0 10rpx 18rpx;flex-wrap:wrap;box-sizing:border-box;padding-top:36rpx;}
+.money-item{width:196rpx;height:76rpx;line-height:76rpx;text-align:center;font-size:28rpx;color:#30c187;border-radius:15rpx;background:#fff;margin-bottom:30rpx;}
+.money-item.active{background:#fff6dc;color:#f60;font-weight:bold;}
+.fill-int{width:100%;padding:0 26rpx;box-sizing:border-box;font-size:28rpx;color:#666;margin-bottom:20rpx;background:#fff;}
+.fill-int .fill-item{height:100rpx;line-height:100rpx;border-bottom:1rpx solid #e2e2e2;}
+.fill-int .switch{width:100rpx;height:50rpx;background:#e2e2e2;border-radius:30rpx;}
+.fill-int .txt{text-align:right;color:#ccc;margin-right:20rpx;font-size:28rpx;}
+.fill-int .calc{text-align:right;color:#666;}
+.fill-int .calc text{color:#30c187;font-weight:bold;}
+.fill-int .switch.on{background:#30c187;}
+.fill-int .switch .circular{width:40rpx;height:38rpx;background:#fff;border-radius:50%;position: relative;left:10rpx;}
+.fill-int .switch .circular.on{position: relative;left:50rpx;}
+.foot{width:100%;padding:0 26rpx;box-sizing:border-box;}
+.payment{width:100%;height:90rpx;margin-top:50rpx;font-size:36rpx;color:#fff;font-weight:bold;line-height:90rpx;text-align:center;background:linear-gradient(to bottom,#30c180,#30c19f);border-radius:15rpx; }

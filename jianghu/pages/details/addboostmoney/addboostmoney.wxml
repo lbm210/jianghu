@@ -1,0 +1,67 @@
+<view class="container">
+  <view class="money-box">
+    <text>请选择加助金额</text>
+    <view class="money-ul disflex j-b">
+      <block wx:for="{{moneyData}}" wx:key="">
+        <view class="money-item {{item.on?'':'active'}}" id="{{item.id}}" bindtap="getMoney">
+          {{item.nmb}}元
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="fill-int">
+    <view class="disflex j-b a-c fill-item">
+      <text>其他金额</text>
+      <input type="number" bindinput="setMoney" value="{{intMoney}}" id="int_money" class="flexn f" type="number" placeholder="请输入具体金额，不少于1元" placeholder-style="font-size:28rpx;color:#ccc;"/>
+      元
+    </view>
+    <view class="disflex j-b a-c fill-item">
+      <text>零钱抵扣</text>
+      <text class="flexn txt">剩余可用零钱￥{{20.00}}</text>
+      <view class="switch {{checked?'on':''}} disflex a-c" bindtap="switchSmallChange">
+        <view class="circular {{checked?'on':''}}"></view>
+      </view>
+    </view>
+    <view class="disflex j-b a-c fill-item">
+      <text>加助计算器</text>
+      <view class="calc">您预计可帮TA增加<text>500次</text>分享转发</view>
+    </view>
+    <view class="fill-item last-item">
+      <textarea placeholder="跟他说点什么吧..." bindinput="showVlaLength"  placeholder-style="color:#ccc;" maxlength="100"/>
+      <text>{{textLength}}/100</text>      
+    </view>
+  </view>
+  <!-- 他们为TA加助 -->
+  <view class="more-list">
+    <view class="tit">
+      他们为TA加助
+    </view>
+    <block wx:for="{{itemData}}" wx:key="">
+      <view class="item-tit disflex a-c" wx:if="{{index<5}}">
+        <image class="rankImg" mode="aspectFit" src="../../../images/first.png" wx:if="{{index==0}}"/>
+        <image class="rankImg" mode="aspectFit" src="../../../images/second.png" wx:elif="{{index==1}}"/>
+        <image class="rankImg" mode="aspectFit" src="../../../images/third.png" wx:elif="{{index==2}}"/>
+        <view class="rank" wx:if="{{index>2}}">
+          {{index + 1}}
+        </view>
+        <image class="tx" src="{{item.imgUrl}}" mode="aspectFit"/>
+        <view class="disflex fd-c">
+          <view class="name">{{item.name}}</view>
+          <text class="time">{{item.time}}</text>
+        </view>
+        <view class="item-money">
+          <text>加助</text>{{item.money}}元
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 支付 -->
+  <view class="wallet disflex j-b a-c">
+    <view>
+      合计：<text class="money">￥{{checkMoney}}</text>
+    </view>
+    <view class="payment" bindtap="payment">
+      确认支付
+    </view> 
+  </view>
+</view>

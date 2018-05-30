@@ -1,0 +1,3 @@
+.container{padding-top:240rpx;width:100%;height:100%;}
+image{width:210rpx;margin-bottom:40rpx;}
+text{font-size:24rpx;color:#ccc;}

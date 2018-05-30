@@ -1,0 +1,266 @@
+<!--pages/details/details.wxml-->
+<import src="../template/template.wxml" />
+<view class="container a-c">
+  <image class="banner" src="../../images/banner.png" mode="widthFix"/>
+  <view class="pon-info disflex">
+    <image class="tx" src="{{userInfo.tx}}" mode="aspectFit"/>
+    <view class="disflex fd-c f-c">
+      <text class="name">{{userInfo.name}}</text>
+      <text class="time">{{userInfo.time}}</text>
+    </view>
+    <text class="surplus-t">剩余{{userInfo.date}}天</text>
+  </view>
+  <text class="explain">{{userInfo.tit}}</text>
+  <!-- 助推数据 -->
+  <view class="boost">
+    <view class="boost-list disflex">
+      <view class="flexn b-af">
+        <text class="b-txt ellipsis">爱心助推(次)</text>
+        <text class="b-nmb ellipsis">0</text>
+      </view>
+      <view class="flexn b-af">
+        <text class="b-txt ellipsis">助推目标(次)</text>
+        <text class="b-nmb ellipsis">5</text>
+      </view>
+      <view class="flexn b-af">
+        <text class="b-txt ellipsis">助推鼓励金(元)</text>
+        <text class="b-nmb ellipsis">2000</text>
+      </view>
+    </view>
+    <view class="progs">
+      <progress percent="{{indicator.left}}" stroke-width="10"  show-info="{{false}}" />
+      <view class="progs-t">
+        <view class="indicator" style="left:{{indicator.left - 1}}%">{{indicator.left}}%</view>
+      </view>
+    </view>
+    <view class="boost-item" wx:if="{{nmb}}">
+      <view class="boost-item-tit">
+        已有<text>{{nmb}}位</text>爱心大使帮TA助推  
+      </view>
+      <view class="boost-item-img" catchtap="goToBoost">
+        <block wx:for="{{boostImg}}" wx:key="">
+          <image src="{{item}}" wx:if="{{index < 10 && item}}" />
+          <image src="../../images/default.png" wx:if="{{!item}}" />
+        </block>
+        <text class="iconfont icon-right"></text>
+      </view>
+    </view>
+  </view>
+  <!-- 助推信息 -->
+  <view class="boost-info disflex fd-c a-c">
+    <view class="boost-tit">
+      <text>悬赏金额：<text class="money">{{userInfo.money}}</text></text>
+      <text>发生时间：{{userInfo.happenTime}}</text>
+      <text>地点：{{userInfo.address}}</text>
+      <text class="information">{{userInfo.text}}</text>
+    </view>
+    <view class="boost-img disflex j-b">
+      <block wx:for="{{userInfo.imgUrl}}" wx:key="">
+        <image src="{{item}}" data-index="{{index}}" bindtap="swiper" mode="aspectFill"/>
+      </block>
+    </view>
+    <view class="tel" bindtap="tel">
+      提供线索
+    </view>
+  </view>
+  <!-- 加助信息 -->
+  <view class="hp">
+    <view class="hp-box disflex a-c">
+      <image src="../../images/huo.png" mode="widthFix"/>
+      <text>TA的加助支持</text>
+    </view>
+    <!-- 没有加助信息 -->
+    <view class="isSpace disflex fd-c a-c" wx:if="{{false}}">
+      <text>还没有人帮他加助</text>
+      <text class="hp-btn" bindtap="hp-btn">去帮他加助</text>
+    </view>
+    <!-- 有信息 -->
+    <view wx:if="{{true}}">
+      <view class="pon-item">
+        <view class="pon-info disflex">
+          <image class="tx" src="../../images/tx10.png" mode="aspectFit"/>
+          <view class="disflex fd-c f-c">
+            <view class="nm-t">
+              <text class="name">名字 </text>
+              <text>加助支持</text>
+              <text class="money">10.00</text>
+            </view>
+            <text class="time">2018/4/45</text>
+          </view>
+          <button class="iconfont icon-xiaoxi" bindgetuserinfo="bindGetUserInfo" id="{{item.id}}" plain="true" bindtap="reply" open-type="getUserInfo"></button>
+        </view>
+        <view class="reply">
+          <text>朋友家的狗走势了，很可惜，狗狗太可爱了，希望别被吃了</text>
+          <view wx:if="{{true}}">
+            <view class="reply-other">
+              <text class="rep-name">边缘剑客：</text>
+              狗是好东西
+            </view>
+          </view>
+        </view>
+        <view style="display:{{display}}" class="reply-int-box disflex a-c">
+          <input type="text" class="reply-int flexn" focus="{{focus}}" bindblur="intHide" bindinput="setComment" confirm-type="评论"/>
+          <view bindtap="comment">
+            评论
+          </view>
+        </view>
+      </view>
+      <view class="sey-more" bindtap="seyMore">
+        查看更多加助支持(5条)<text class="iconfont icon-right"></text>
+      </view>
+    </view>
+  </view>
+  <!-- 列表信息 -->
+  <view class="list-box">
+    <view class="info-tit">
+    <view class="info-txt">
+      他们也在求助
+    </view>
+    <view class="gz disflex fd-c">
+      <text>关注“{{gzh}}”公众号帮助更多白城人</text>
+      <text>微信搜索公众号：{{wx}}</text>
+    </view>
+    </view>
+    <block wx:for="{{infoData}}" wx:key="">
+      <template is="list-item" data="{{...item}}"></template>
+    </block>
+  </view>
+  <!-- 加载 -->
+  <view class="loading disflex a-c j-c">
+    <image src="../../images/ajax-loader.gif" mode="widthFix"/>
+    <text>正在加载...</text>
+  </view>
+  <view class="fot-hp disflex a-c j-c">
+    <view class="jz-btn" bindtap="goToAddBoost">
+      帮TA加助
+    </view>
+    <button class="zt-btn" bindtap="share">
+      帮TA助推
+    </button>
+  </view>
+  <!-- 悬浮窗 -->
+  <view class="browse disflex a-c">
+    <text class="iconfont icon-home1" bindtap="gotoIndex"></text>
+    浏览<text class="nmb">{{ browseData.browseN}}</text>
+    参与<text class="nmb">{{ browseData.canyu}}</text>
+    <view class="tel" bindtap="tel">
+      <text class="iconfont icon-phone"></text>
+      提供线索
+    </view>
+  </view>
+  <view class="fb">
+    <swiper indicator-dots="{{false}}" autoplay="true" interval="{{5000}}" duration="{{1000}}" vertical="{{true}}" circular="{{true}}">
+      <block wx:for="{{fbList}}" wx:key="_ftList">
+        <swiper-item class="disflex a-c">
+          <image src="{{item.imgUrl}}" mode="widthFix" />
+          <text>{{item.name}}发布一条江湖救急</text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="contact">
+    <view class="disflex fd-c j-c a-c kefu-f" bindtap="telKefu">
+      <text class="iconfont icon-kefu"></text>
+      <text>客服</text>
+    </view>
+    <view class="disflex fd-c j-c a-c fb-f" bindtap="toFB">
+      <text class="iconfont icon-emizhifeiji"></text>
+      <text>发布</text>
+    </view>
+  </view>
+</view>
+<!-- 提供线索弹窗 -->
+<view class="mask {{mask?'show':''}} disflex j-c a-c" catchtap="close">
+  <view class="dia-tel">
+    <view>
+      {{userInfo.phone}}
+    </view>
+    <view catchtap="telphone">
+      呼叫
+    </view>
+    <view catchtap="copy">
+      复制
+    </view>
+    <view catchtap="addPhoneContact">
+      添加到通讯录
+    </view>
+  </view>
+</view>
+<!-- 轮播图 -->
+<swiper indicator-dots="true" wx:if="{{imgSwiper}}" class="img-swiper">
+  <block wx:for="{{userInfo.imgUrl}}" wx:key="">
+    <swiper-item class="disflex a-c">
+      <image src="{{item}}" data-id="{{index}}" mode="aspectFit"/>
+    </swiper-item>
+  </block>
+        
+</swiper>
+<!--pop-->
+<view class="pop-zhezhao disflex j-c a-c" bindtap="pop" data-statu="open" wx:if="{{showPop}}">
+  <view class="pop-box">
+    <view class="pop-btn-close" bindtap="pop" data-statu="close"></view>
+    <view class="top" wx:if="{{popState==0}}">
+      <text class="tit">已成功达成目标</text>
+      <text class="txt">共获得<text class="num">{{popnum.helpNum}}</text>次帮助</text>
+      <text class="txt">感谢大家的帮助与支持！</text>
+    </view>
+    <view class="top" wx:elif="{{popState==1}}">
+      <text class="tit">已关闭</text>
+      <text class="txt">您的本次求助共获得<text class="num">{{popnum.helpNum}}次</text>帮助</text>
+      <text class="txt"><text class="num">{{popnum.readNum}}次</text>阅读，<text class="num">{{popnum.moneyNum}}元</text>加助</text>
+    </view>
+    <view class="top" wx:elif="{{popState==2}}">
+      <text class="tit">已关闭</text>
+      <text class="txt">您的帖子被管理员关闭</text>
+      <text class="txt" bindtap="toCard">请到<text class="num" >【我的-我的求帖】</text>查看</text>
+    </view>
+    <view class="top" wx:elif="{{popState==3}}">
+      <text class="tit1">已关闭</text>
+    </view>
+    <view class="top1" wx:else>
+      <text class="tit">助推成功</text>
+      <text class="txt">获得助推金<text class="num">{{popnum.jinNum}}</text>元</text>
+    </view>
+    <view class="cen">
+      <view class="tit">他们正在求助</view>
+      <block wx:for="{{popList}}" wx:key="">
+        <view class="pop-items pop-items{{index+1}} a-c disflex">
+          <image class="pic" src="{{item.picUrl}}" mode="aspectFit"/>
+          <text class="txt flexn">{{item.txt}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="btn {{btnState?'btn1':''}}" bindtap="gotoIndex">
+      查看更多求助信息
+    </view>
+  </view>
+</view> 
+<!--intorPop-->
+<view class="pop-zhezhao" bindtap="introPop" data-statu="open" wx:if="{{showIntroPop}}"></view> 
+<view class="intro-pop-box" wx:if="{{showIntroPop}}">
+  <view class="pop-btn-close" bindtap="introPop" data-statu="close"></view>
+  <view class="tit">助推说明</view>
+  <text class="txt">江湖救急信息为互助信息发布平台，您需帮助该求助者转发此条信息到微信群，转发后您将收益0.1-0.3元现金（单人限一次）。</text>
+  <button class="btn" open-type="share">
+    立即帮TA助推
+  </button>
+</view>
+<!--guidePop-->
+<view class="pop-zhezhao" bindtap="guidePop" data-statu="open" wx:if="{{showGuidePop}}"></view> 
+<view class="guide-pop-box" wx:if="{{showGuidePop}}">
+  <image src="../../images/dialog-guide.png" mode="widthFix"/>
+  <text class="txt">江湖救急为本地互助信息发布平台，您需帮助TA转发此条信息到朋友圈或微信群，转发后可获得助推金奖励（单人限一次）</text>
+  <view class="btn" bindtap="guidePop" data-statu="close"></view>
+</view>
+<!--kefuPop-->
+<view class="pop-zhezhao" bindtap="pop" data-statu="open" wx:if="{{showKefuPop}}"></view> 
+<view class="kefu-pop-box" wx:if="{{showKefuPop}}">
+  <view class="pop-btn-close" bindtap="kefuPop" data-statu="close"></view>
+  <image src="../../../images/er-code.jpg"/>
+  <text class="txt">截图扫码，联系客服</text>
+  <text class="txt">客服电话：010-29329392</text>
+  <view class="btn" bindtap="pop" data-statu="close">我知道了</view>
+</view>
+
+
+

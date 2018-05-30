@@ -1,0 +1,123 @@
+<view class="container">
+  <view class="p26">
+    <view class="tit list disflex a-c">
+      <text>求助标题</text>
+      <input type="text" class="flexn" value="{{userInfo.tit}}" placeholder="好的标题更容易获得帮助" placeholderStyle="color:#ccc;"/>
+    </view>
+    <view class="introduce-box">
+      <textarea class="introduce" bindinput="showVlaLength" value="{{userInfo.text}}"  placeholder="请详细填写事件发生时间、地点、前因后果、走失的人、动物或遗失物品的详细特征" placeholderStyle="color:#ccc;line-height:40rpx;" maxlength="500"/>
+      <text>{{textLength}}/500</text>
+    </view>
+    <view class="list disflex a-c date">
+      <text>发生时间</text>
+      <picker class="flexn" mode="date" bindchange="setDate" value="{{date}}">
+        <view wx:if="{{date}}">{{date}}</view>
+        <view wx:if="{{!date}}" style="color:#ccc">选择日期和时间</view>
+      </picker>
+      
+      <text class="iconfont icon-right"></text>
+    </view>
+    <view class="list disflex a-c">
+      <text>发生地点</text>
+      <input type="text" class="flexn" value="{{userInfo.address}}" placeholder="请输入事件发生地址" placeholderStyle="color:#ccc;"/>
+    </view>
+    <view class="img-box">
+      <text class="img-tit">上传求助图片（选填最多上传9张）</text>
+      <view class="disflex choose-box">
+        <block wx:for="{{imgUrlData}}" wx:key="">
+          <view class="choose" wx:if="{{item.show}}">
+            <view class="iconfont icon-cuohao" id="{{item.id}}" bindtap="deleteImg">
+            </view>
+            <image src="{{item.imgUrl}}" mode="aspectFit"/>
+          </view>
+        </block>
+        <view class="choose-img disflex j-c a-c" bindtap="chooseImg">
+          <text class="iconfont icon-xiangji"></text>
+        </view>
+      </view>
+    </view>
+    <view class="list disflex a-c">
+      <text>帖子有效期</text>
+      <input type="number" value="{{userInfo.date}}" placeholder="过期后自动关闭帖子，最多30天" placeholderStyle="color:#ccc;" class="flexn mr18"/>
+      <text>天</text>
+    </view>
+  </view>
+  <view class="list disflex a-c mb20 p26">
+      <text>悬赏金额</text>
+      <input type="number" value="{{userInfo.reward}}" placeholder="选填项，不需要在线支付" placeholderStyle="color:#ccc;" class="flexn mr18"/>
+      <text>元</text>
+    </view>
+  <view class="list disflex a-c p26 bd-none">
+      <text bindtap="prompt">助推鼓励金</text>
+      <text class="prompt" bindtap="prompt">?</text>
+      <input type="number"  bindinput="setBoostmoney" placeholder="助推金不得低于200元" placeholderStyle="color:#ccc;" class="flexn mr18"/>
+      <text>元</text>
+  </view>
+  <view class="calc">
+    <text>助推金计算器</text>
+    <view>
+      此条求助信息预计最少被 <text> 10000 </text> 同城人转发
+    </view>
+  </view>
+  <view class="settlement p26">
+    <text class="sent-tit">结算</text>
+    <view class="list disflex a-c">
+      <text>助推鼓励金</text>
+      <text class="flexn tag-r">￥{{userInfo.boostmoney}}</text>
+    </view>
+    <view class="list disflex j-b a-c">
+      <text>零钱抵扣</text>
+      <text class="flexn txt">剩余可用零钱￥{{userInfo.smallmoney}}</text>
+      <view class="switch {{checked?'on':''}} disflex a-c" bindtap="switchSmallChange">
+        <view class="circular {{checked?'on':''}}"></view>
+      </view>
+    </view>
+    <view class="tit list disflex a-c">
+      <text>手机号码</text>
+      <input bindblur="regPhone" type="number" class="flexn" maxlength="11" value="{{userInfo.phone}}" placeholder="请填写" placeholderStyle="color:#ccc;"/>
+    </view>
+    <view class="tit list disflex a-c">
+      <text>填写验证码</text>
+      <input type="number" class="flexn mr" bindinput="validateCode"/>
+      <text class="validate" wx:if="{{state == 0}}" bindtap="getValidate">获取验证码</text>
+      <text class="validate validate2" wx:if="{{state == 1}}">已发送({{countDown}}s)</text>
+      <text class="validate" wx:if="{{state == 2}}" bindtap="againValidate">重新获取</text>
+    </view>
+  </view>
+  <view class="notice p26">
+    <view class="notice-tit">注：</view>
+    <view>
+      1.  禁止发布谣言信息，如发现将追究法律责任；
+    </view>
+    <view class="pb40">
+      2.  助推鼓励金可提升爆料内容的曝光、转发量，并不保证可达成您的实际目的。
+    </view>
+  </view>
+  <view class="payment disflex j-b a-c">
+    <view class="payment-money">
+      应付金额：<text>￥{{userInfo.money}}</text>
+    </view>
+    <view class="payment-btn {{ERR_OK?'on':''}}" bindtap="{{ERR_OK?'payment':''}}">
+      支付并发布
+    </view>
+  </view>
+</view>
+<!-- 弹窗 -->
+<view class="pop-zhezhao" bindtap="pop" wx:if="{{showPop}}"></view> 
+<view class="pop-box" wx:if="{{showPop}}">
+  <view class="top" wx:if="{{popState==0}}">
+    <text class="tit">提示</text>
+    <text class="txt1">您发布的内容涉嫌违反相关国家法律，或涉及广告、商业信息等敏感词，请重新编辑</text>
+  </view>
+  <view class="top" wx:elif="{{popState==1}}">
+    <text class="tit">助推鼓励金说明</text>
+    <text class="txt1">江湖救急信息为求助信息，为了保证您的求助效果，我们视为单次可花费200元以上，用于求助扩散的信息为紧急信息，才可在平台内发布，任何人转发您的信息将收益0.10-0.40元（单人限一次），200元预计最少将为您带来1000人次转发扩散。</text>
+  </view>
+
+  <view class="btn disflex" wx:if="{{popState==0}}">
+    <view class="flexn" bindtap="pop" data-statu="close">再看看</view>
+  </view>
+  <view class="btn disflex" wx:else>
+    <view class="flexn" bindtap="pop" data-statu="close">确定</view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+/* pages/details/boost/boost.wxss */
+.container{background:#fff;padding:0 26rpx;display: block;}
+.tit{font-size:28rpx;color:#999;padding-top:35rpx;}
+.tit text{color:#30c080;font-weight:bold;}
+.item-tit{padding:30rpx 0;width:100%;border-bottom:1rpx solid #e2e2e2;}
+.item-tit .name{font-weight:bold;}
+.item-tit .name text{font-weight:200;color:#666;padding-left:10rpx;}
+.item-tit .name text.red{color:red;}
+.item-money{position: absolute;right:26rpx;font-size:28rpx;color:#30c080;font-weight:bold;}

@@ -1,0 +1,80 @@
+<view class="container">
+  <view class="p26">
+    <view class="tit list disflex a-c">
+      <text>求助标题</text>
+      <input type="text" class="flexn" value="{{userInfo.tit}}" placeholder="好的标题更容易获得帮助" placeholderStyle="color:#ccc;"/>
+    </view>
+    <view class="introduce-box">
+      <textarea class="introduce" bindinput="showVlaLength" value="{{userInfo.text}}"  placeholder="请详细填写事件发生时间、地点、前因后果、走失的人、动物或遗失物品的详细特征" placeholderStyle="color:#ccc;line-height:40rpx;" maxlength="500"/>
+      <text>{{textLength}}/500</text>
+    </view>
+    <view class="list disflex a-c date">
+      <text>发生时间</text>
+      <picker class="flexn" mode="date" bindchange="setDate" value="{{date}}">
+        <view wx:if="{{date}}">{{date}}</view>
+        <view wx:if="{{!date}}">选择日期和时间</view>
+      </picker>
+      
+      <text class="iconfont icon-right"></text>
+    </view>
+    <view class="list disflex a-c">
+      <text>发生地点</text>
+      <input type="text" class="flexn" value="{{userInfo.address}}" placeholder="请输入事件发生地址" placeholderStyle="color:#ccc;"/>
+    </view>
+    <view class="img-box">
+      <text class="img-tit">上传求助图片（选填最多上传9张）</text>
+      <view class="disflex choose-box">
+        <block wx:for="{{imgUrlData}}" wx:key="">
+          <view class="choose" wx:if="{{item.show}}">
+            <view class="iconfont icon-cuohao" id="{{item.id}}" bindtap="deleteImg">
+            </view>
+            <image src="{{item.imgUrl}}" mode="aspectFit"/>
+          </view>
+        </block>
+        <view class="choose-img disflex j-c a-c" bindtap="chooseImg">
+          <text class="iconfont icon-xiangji"></text>
+        </view>
+      </view>
+    </view>
+    <view class="list disflex a-c">
+      <text>帖子有效期</text>
+      <input type="number" value="{{userInfo.date}}" placeholder="过期后自动关闭帖子，最多30天" placeholderStyle="color:#ccc;" class="flexn mr18"/>
+      <text>天</text>
+    </view>
+  </view>
+  <view class="list disflex a-c p26">
+    <text>悬赏金额</text>
+    <input type="number" value="{{userInfo.reward}}" placeholder="选填项，不需要在线支付" placeholderStyle="color:#ccc;" class="flexn mr18"/>
+    <text>元</text>
+  </view>
+  <view class="notice p26">
+    <view class="notice-tit">注：</view>
+    <view>
+      1.  禁止发布谣言信息，如发现将追究法律责任；
+    </view>
+    <view class="pb40">
+      2.  助推鼓励金可提升爆料内容的曝光、转发量，并不保证可达成您的实际目的。
+    </view>
+  </view>
+  <view class="payment disflex j-b a-c">
+    <view class="payment-money">
+      已付金额：<text>￥{{userInfo.money}}</text>
+    </view>
+    <view class="payment-btn {{showPop?'on':''}}" bindtap="{{once?'':'submitReview'}}">
+      提交审核
+    </view>
+  </view>
+</view>
+<view class="pop-box disflex j-c a-c" wx:if="{{showPop}}" bindtap="pop">
+  <view class="top">
+    <text class="tit">提交成功</text>
+    <view class="txt-box">
+      <text class="txt">请联系客服审核</text>
+      <text class="txt">客服电话：010-29329392</text>
+    </view>
+    <image src="../../../images/er-code.jpg" mode="aspcetFit"/>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+</view>

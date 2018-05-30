@@ -1,0 +1,27 @@
+<import src="../../template/template" />
+<view class="container">
+  <view class="cost">
+    头条费用：
+    <text class="bold">{{money}}元</text>
+  </view>
+  <view class="disflex j-b a-c fill-item">
+    <text>零钱抵扣</text>
+    <text class="flexn txt">剩余可用零钱￥{{smallMoney}}</text>
+    <view class="switch {{checked?'on':''}} disflex a-c" bindtap="switchSmallChange">
+      <view class="circular {{checked?'on':''}}"></view>
+    </view>
+  </view>
+  <view class="btn disflex j-b bold">
+    <view>
+      查看案例
+    </view>
+    <view>
+      立即申请
+    </view>
+  </view>
+  <view class="explain">
+    您在支付一定费用后可以申请上头条，申请后将在1-3日内刊登在公众号内，请随时关注公众号动态，位置为下红框内随机位置，如需加急请
+  </view>
+  <image class="examples" src="../../../images/examples.png" mode="widthFix"/>
+  <template is="tab-list"></template>
+</view>

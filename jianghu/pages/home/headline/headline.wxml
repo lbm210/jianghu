@@ -1,0 +1,108 @@
+<view class="container">
+  <view wx:if="{{itemData}}">
+    <block wx:for="{{itemData}}" wx:key="">
+      <view class="item" >
+        <view class="item-tit"> 
+          <text class="bh">编号：</text>
+          <text class="nmb">{{item.nmb}}</text>
+          <text class="time">{{item.time}}</text>
+          <text class="state" wx:if="{{item.state == 1}}">可申请</text>
+          <text class="state" wx:elif="{{item.state == 2}}">审核中</text>
+          <text class="state" wx:elif="{{item.state == 3}}">审核未通过</text>
+          <text class="state" wx:elif="{{item.state == 4}}">已退款</text>
+          <text class="state" wx:elif="{{item.state == 5}}">已刊登</text>
+          <text class="state" wx:elif="{{item.state == 6}}">未刊登</text>
+        </view>
+        <view class="item-content">
+          <view class="con-txt">{{item.txt}}</view>
+          <image src="{{item.imgUrl}}" mode="widthFix"/>
+        </view>
+        <view class="item-money" wx:if="{{item.state != 1}}">
+          <view class="disflex j-b">
+            <text>微信支付</text>
+            <text>￥{{item.money}}</text>
+          </view>
+          <view class="disflex j-b">
+            <text>零钱支付</text>
+            <text>￥{{item.smallMoney}}</text>
+          </view>
+          <view class="disflex j-b {{item.state == 2?'bd-none':''}}">
+            <text>实付款</text>
+            <text class="bold">￥{{item.realPayment}}</text>
+          </view>
+        </view>
+        
+        <!-- 可申请-->
+        <view class="continue continue2 disflex a-c" wx:if="{{item.state == 1}}">
+          <view>
+            需付款：<text>￥{{item.needMoney}}</text>
+          </view>
+          <text class="compent-btn f60" bindtap="toCostheadline">立即申请</text>
+        </view>
+        <!-- 审核未通过 -->
+        <view class="continue  disflex" wx:elif="{{item.state == 3}}">
+          <text bindtap="errReason">失败原因</text>
+          <text bindtap="refund" data-id="{{item.nmb}}">申请退款</text>
+        </view>
+        <!-- 已退款 -->
+        <view class="continue  disflex" wx:elif="{{item.state == 4}}">
+          <text bindtap="refundPath">退款路径</text>
+        </view>
+        <!-- 已刊登 -->
+        <view class="continue  disflex" wx:elif="{{item.state == 5}}">
+          <text bindtap="effect">头条效果</text>
+        </view>
+        <!-- 未刊登 -->
+        <view class="continue  disflex" wx:elif="{{item.state == 6}}">
+          <text bindtap="telKF">联系客服</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- pop -->
+<view class="pop-zhezhao" bindtap="pop" wx:if="{{showPop}}"></view> 
+<view class="pop-box disflex j-c a-c" wx:if="{{showPop}}">
+  <view class="top" wx:if="{{popErrReason}}">
+    <text class="tit">审核失败原因</text>
+    <text class="txt2">您的头条申请，不能通过</text>
+    <view class="btn disflex">
+      <view class="flexn btn-cancle1" bindtap="pop">取消</view>
+      <view class="flexn" bindtap="pop">重新申请</view>
+    </view>
+  </view>
+  <view class="top" wx:if="{{popRefund}}">
+    <text class="tit">申请退款提示</text>
+    <text class="txt2">是否确定取消申请上头条，申请退款后，退款金额将退还至您的钱包</text>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+      <view class="flexn btn-cancle" bindtap="pop">取消</view>
+    </view>
+  </view>
+  <view class="top" wx:if="{{popRefundPath}}">
+    <text class="tit">退款凭证</text>
+    <text class="txt2">已退还至您的钱包</text>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+  <view class="top" wx:if="{{popEffect}}">
+    <text class="tit">头条效果</text>
+    <text class="txt2">请点击查看链接查看头条效果</text>
+    <view class="btn disflex">
+      <view class="flexn btn-cancle1" bindtap="pop">取消</view>
+      <view class="flexn" bindtap="pop">查看链接</view>
+    </view>
+  </view>
+  <view class="top" wx:if="{{popKF}}">
+    <text class="tit">联系客服</text>
+    <view class="txt-box">
+      <text class="txt">请截图扫描二维码联系客服</text>
+      <text class="txt">客服电话：010-29329392</text>
+    </view>
+    <image src="../../../images/er-code.jpg" mode="aspcetFit"/>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+</view>

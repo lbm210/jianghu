@@ -1,0 +1,17 @@
+
+.item{border-bottom:1rpx solid #e2e2e2;padding-bottom:10rpx;}
+.pon-info{width:100%;padding:40rpx 26rpx 0;box-sizing:border-box;position: relative;background: #fff;}
+.pon-info .tx{width:77rpx;height:77rpx;border-radius:50%;margin-right:18rpx;}
+.pon-info .name{font-size:28rpx;color:#333;margin-bottom:6rpx;font-weight:bold;margin-right:5rpx;}
+.pon-info .time{font-size:20rpx;color:#ccc;}
+.pon-info .surplus-t{position: absolute;top:40rpx;right: 26rpx;line-height: 77rpx;font-size:24rpx;color:#999;}
+.pon-info .nm-t{font-size:28rpx;color:#999;margin-bottom:6rpx;}
+.pon-info .nm-t .money{color:#30c080;margin-left:5rpx;}
+.pon-info .icon-xiaoxi{width:60rpx;text-align: right;position: absolute;top:40rpx;right:26rpx;font-size:36rpx;line-height: 28rpx;color:#ccc;border-color:#fff;padding:0;}
+.item-text{font-size:28rpx;color:#333;margin-left:120rpx;}
+.reply{width:100%;padding:15rpx 26rpx 30rpx 120rpx;box-sizing:border-box;font-size:28rpx;color:#333;line-height:40rpx;}
+.reply-other{font-size:24rpx;color:#666;padding-top:15rpx;}
+.reply-other .rep-name{color:#41a7dd;}
+.reply-int-box{width:100%;position:fixed;bottom:0;left:0;background:#fff;padding:12px 26rpx;z-index:20;box-sizing:border-box;}
+.reply-int-box>view{width:80rpx;height:60rpx;line-height:60rpx;background:#30c180;font-size:28rpx;color:#fff;text-align:center;border-radius:10rpx;margin-bottom:10rpx;}
+.reply-int{font-size:24rpx;height:60rpx;border:1rpx solid #ccc;border-radius:10rpx;margin-right:20rpx;margin-bottom:10rpx;padding-left:10rpx;}

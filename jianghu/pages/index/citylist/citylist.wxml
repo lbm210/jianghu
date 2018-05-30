@@ -1,0 +1,23 @@
+
+<view class="container a-c">
+  <view class="search disflex j-b">
+    <input type="text" placeholder="输入城市名称" class="flexn" bindblur="dataShow" bindfocus="showList" bindinput="changeCity" confirm-type="search"/>
+    <text bindtap="searchCity">搜索</text>
+  </view>
+  <view class="city-list" wx:if="{{!cityListState}}">
+    <block wx:for="{{cityData}}" wx:key="">
+      <view class="city-item disflex j-b a-c" data-id="{{item.id}}" bindtap="setCity">
+        <text>{{item.city}}</text>
+        <text class="iconfont icon-right"></text>
+      </view>
+    </block>
+  </view>  
+  <view class="city-list" wx:if="{{cityListState}}">
+    <block wx:for="{{cityList}}" wx:key="">
+      <view class="city-item disflex j-b a-c" data-id="{{item.id}}" bindtap="setCity">
+        <text>{{item.city}}</text>
+        <text class="iconfont icon-right"></text>
+      </view>
+    </block>
+  </view>  
+</view>

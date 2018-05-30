@@ -1,0 +1,123 @@
+<view class="container {{itemData?'':'bg-fff'}}">
+  <view wx:if="{{itemData}}">
+    <block wx:for="{{itemData}}" wx:key="">
+      <view class="item" >
+        <view class="item-tit"> 
+          <text class="bh">编号：</text>
+          <text class="nmb">{{item.nmb}}</text>
+          <text class="time">{{item.time}}</text>
+          <text class="state" wx:if="{{item.state == 2}}">审核中</text>
+          <text class="state" wx:elif="{{item.state == 3}}">发布中</text>
+          <text class="state" wx:elif="{{item.state == 4}}">审核失败</text>
+          <text class="state" wx:elif="{{item.state == 5 || item.state == 6}}">关闭</text>
+        </view>
+        <view class="item-content">
+          <view class="con-txt">{{item.txt}}</view>
+          <image src="{{item.imgUrl}}" mode="widthFix"/>
+        </view>
+        <view class="money-info disflex j-b">
+          <view>
+            <text class="m-tit" wx:if="{{item.state == 1}}">待付金额：</text>
+            <text class="m-tit" wx:elif="{{item.state != 1}}">微信支付：</text>
+            <text class="i-money">￥{{item.money}}</text>
+          </view>
+          <view>
+            <text class="m-tit" wx:if="{{item.state == 1}}">零钱抵用：</text>
+            <text class="m-tit" wx:elif="{{item.state != 1}}">零钱支付：</text>
+            <text class="i-money small">￥{{item.smallMoney}}</text>
+          </view>
+        </view>
+        <view class="surplus-money disflex a-c" wx:if="{{item.state > 1 && item.state < 6}}">
+          <view class="flexn">
+            剩余助推金
+            <text>￥{{item.surMoney}}</text>
+          </view>
+          <view class="flexn">
+            助推总金额
+            <text>￥{{item.ztMoney}}</text>
+          </view>
+        </view>
+        <!-- 继续发布按钮 -->
+        <view class="continue disflex" wx:if="{{item.state == 1}}">
+          <text class="close" data-id="{{item.nmb}}" bindtap="closeCard">关闭</text>
+          <text class="edit" bindtap="goToCreatcard" data-id="{{item.nmb}}">编辑</text>
+          <text class="compent-btn f60" bindtap>继续支付</text>
+        </view>
+        <!-- 审核中按钮 -->
+        <view class="continue  disflex" wx:if="{{item.state == 2}}">
+          <text bindtap="telKF">联系客服加速审核</text>
+        </view>
+        <!-- 发布中 -->
+        <view class="continue  disflex" wx:if="{{item.state == 3}}">
+          <text bindtap="toAddBoost" data-id="{{item.nmb}}">追加助推金</text>
+          <text bindtap="effect" data-id="{{item.id}}">帖子效果</text>
+          <text class="close" bindtap="closeCard" data-id="{{item.id}}">关闭</text>
+          <text class="f60">找人帮忙</text>
+        </view>
+        <!-- 审核失败 -->
+        <view class="continue  disflex" wx:if="{{item.state == 4}}">
+          <text bindtap="effect" data-id="{{item.id}}">帖子效果</text>
+          <text bindtap="errReason">失败原因</text>
+          <text bindtap="goToSecondEdit" data-id="{{item.nmb}}">编辑</text>
+          <text bindtap="closeCard">退款/关闭</text>
+        </view>
+        <!-- 已关闭 -->
+        <view class="continue  disflex" wx:if="{{item.state == 5}}">
+          <text bindtap="effect" data-id="{{item.id}}">帖子效果</text>
+          <text bindtap="refundPath">退款路径</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{!itemData}}" class="empty disflex fd-c a-c">
+    <image src="../../../images/space.png" mode="scaleFixFill"/>
+    <view>
+      暂无数据，去<text bindtap="goToCreatcard">发布求助</text>
+    </view>
+  </view>
+</view>
+<!--pop-->
+<view class="pop-zhezhao" bindtap="pop" wx:if="{{showPop}}"></view> 
+<view class="pop-box disflex j-c a-c" wx:if="{{showPop}}">
+  <view class="top" wx:if="{{popClose}}">
+    <text class="tit">是否关闭此条信息</text>
+    <text class="txt1">如求助信息内助推金未用完，剩余助推金将会退还至您的账户余额，可下载APP提现</text>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="determine">确定</view>
+      <view class="flexn btn-cancle" bindtap="pop"> 取消</view>
+    </view>
+  </view>
+  <view class="top" wx:elif="{{popKF}}">
+    <text class="tit">联系客服</text>
+    <view class="txt-box">
+      <text class="txt">请截图扫描二维码联系客服</text>
+      <text class="txt">客服电话：010-29329392</text>
+    </view>
+    <image src="../../../images/er-code.jpg" mode="aspcetFit"/>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+  <view class="top" wx:elif="{{popEffect}}">
+    <text class="tit">效果详情</text>
+    <text class="txt2">阅读<text class="num">{{1235}}</text>转发<text class="num">{{123}}</text>加助<text class="num">{{100}}</text></text>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+  <view class="top" wx:elif="{{popErrReason}}">
+    <text class="tit">审核失败原因</text>
+    <text class="txt2">您的求助信息包含广告信息</text>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+  <view class="top" wx:else="{{popRefundPath}}">
+    <text class="tit">退款路径</text>
+    <text class="txt2">已退还至您的钱包余额</text>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+  
+</view>

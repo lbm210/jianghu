@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="int-box">
+    <view class="username disflex a-c">
+      <text class="iconfont icon-touxiang1"></text>
+      <input class="flexn" type="text" bindinput="getUsername" placeholder="手机号" placeholder-class="phd" auto-focus/>
+    </view>
+    <view class="password disflex a-c">
+      <text class="iconfont icon-suo"></text>
+      <input class="flexn" type="text" bindinput="getPassword" password placeholder="输入密码" placeholder-class="phd"/>
+    </view>
+  </view>
+  <view class="login-box">
+    <button class="login"  loading="{{loading}}" disabled="{{disabled}}" bindtap="login">登录</button>
+  </view>
+  <view class="forget" bindtap="goRetrieve">
+    忘记密码？
+  </view>
+  <view class="register" bindtap="goRegister">
+    快速注册
+  </view>
+</view>

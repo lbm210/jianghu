@@ -1,0 +1,45 @@
+<!-- 求助列表 -->
+<template name="list-item">
+  <view class="info-list" id="{{id}}" bindtap="goInfo">
+    <view class="info-item">
+      <view class="item-tit disflex">
+        <image class="tx" src="{{txUrl}}" mode="aspectFit"/>
+        <view class="disflex fd-c">
+          <text class="name">{{name}}</text>
+          <text class="time">{{time}}</text>
+        </view>
+        <view class="item-btn {{state?'btn-end':''}}" >
+          {{state?'已帮助':'求帮助'}}
+        </view>
+      </view>
+      <view class="pl">
+        <text class="txt-tit">{{txt}}</text>
+        <image class="in-img" src="{{ioUrl}}" mode="widthFix"/>
+        <view class="hp-pel disflex">
+          <block wx:for="{{hpImglist}}" wx:key="_hpList">
+            <image class="hp-item" src="{{item}}" mode="aspectFit" wx:if="{{index < 5}}"/>
+          </block>
+          <view class="hp-more" wx:if="{{hpImglist.length > 5}}">...</view>
+          <view class="hp-nbm">已有<text>{{nbm}}</text>人献爱心</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="tab-list">
+  <view class="contact">
+    <view class="disflex fd-c j-c a-c" bindtap="toIndex">
+      <text class="iconfont icon-home1"></text>
+      <text>首页</text>
+    </view>
+    <view class="disflex fd-c j-c a-c kefu-f" bindtap="telKefu">
+      <text class="iconfont icon-kefu"></text>
+      <text>客服</text>
+    </view>
+    <view class="disflex fd-c j-c a-c fb-f" bindtap="toFB">
+      <text class="iconfont icon-emizhifeiji"></text>
+      <text>发布</text>
+    </view>
+  </view>
+</template>

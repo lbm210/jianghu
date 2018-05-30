@@ -1,0 +1,29 @@
+.container{background:#f5f5f5;}
+.container.bg-fff{background:#fff;}
+.bold{font-weight:bold;}
+
+.item{width:100%;padding:0 26rpx;box-sizing:border-box;background:#fff;margin-bottom:20rpx;}
+.item-tit{width:100%;position: relative;font-size:24rpx;line-height:24rpx;padding-top:40rpx;}
+.bh{color:#333;}
+.nmb{color:#333;font-weight:bold;margin-right:20rpx;}
+.time{color:#ccc;}
+.state{position: absolute;right:0;color:#30c080;width:100rpx;text-align:right;}
+.item-content{width:100%;padding-top:25rpx;}
+.item-content .con-txt{font-size:28rpx;color:#333;line-height:45rpx;margin-bottom:20rpx;}
+.item-content image{width:100%;}
+.money-info{font-size:24rpx;color:#999;padding:30rpx 0;line-height:24rpx;}
+.money-info .i-money{color:#333;font-weight:bold;}
+.money-info .small{font-weight:normal;}
+.surplus-money{width:100%;height:90rpx;background:#f5f5f5;margin-bottom:30rpx;}
+.surplus-money view{width:50%;line-height:90rpx;color:#999;text-align:center;font-size:24rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;position: relative;}
+.surplus-money view:not(:last-of-type)::after{position: absolute;content:'';right:0;top:25%;width: 1rpx;height:50%;background:#e2e2e2;}
+.surplus-money text{color:#f60;}
+.item-money>view{width:100%;height:85rpx;line-height:85rpx;font-size:24rpx;color:#999;border-bottom:1rpx solid #e2e2e2;}
+.item-money>view.bd-none{border:none;}
+/** 底部按钮 */
+.continue{width:100%;height:56rpx;padding:30rpx 0;justify-content: flex-end;}
+.continue2{justify-content: space-between;font-size:24rpx;}
+.continue2{justify-content: space-between;font-size:24rpx;}
+.continue>text{padding:0 30rpx;height:54rpx;line-height:54rpx;text-align:center;border:1rpx solid #666;font-size:24rpx;color:#666;border-radius:30rpx;margin-left:20rpx;}
+.continue>view{color:#999;}
+.continue>view text{color:#333;font-weight:bold;}

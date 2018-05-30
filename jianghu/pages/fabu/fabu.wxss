@@ -1,0 +1,21 @@
+/* pages/fabu/fabu.wxss */
+.container{background-color:#fff;}
+.ban-box{position:relative;}
+.ban-box .txt-box{width:100%;position:absolute;left:0;top:50%;margin:-54px 0 0 0;}
+.ban-box .txt-box .txt1{font-size:20px;color:#fff;font-weight:bold;line-height:36px;text-align:center;display:block;letter-spacing:3px;}
+.ban-box .txt-box .txt2{font-size:16px;color:#fff;text-align:center;display:block;line-height:28px;}
+.ban-box .txt-box .txt3{font-size:14px;color:#fff;text-align:center;display:block;line-height:26px;}
+.ban-box .txt3 .num{color:#fff799;font-weight:bold;}
+.step-tit{margin:0 26rpx;height:50px;line-height:50px;font-size:18px;color:#999;text-align:center;border-bottom:1px dashed #e2e2e2;}
+.pub-list{padding:0 26rpx 50rpx;margin-bottom:48px;}
+.pub-list .icon{width:96rpx;height:96rpx;margin-right:54rpx;}
+.pub-list .pub-items{padding-top:15px;position:relative;}
+.pub-list .big-row{width:20px;height:24px;background:url(http://img.pccoo.cn/wechat/jianghu/images/publish-in-row.png);background-size:100%;position:absolute;bottom:-17px;left:14px;}
+.pub-list .pub-items3 .big-row{background:none;}
+.pub-list .txt-box{background:#f5f5f5;padding:40rpx 30rpx;position:relative;}
+.pub-list .num{width:15px;height:15px;line-height:15px;text-align:center;color:#fff;background:#30c080;border-radius:50%;font-size:14px;margin:3px 10px 0 0;display:inline-block;}
+.pub-list .tit{font-size:16px;color:#30c080;font-weight:bold;display:block;}
+.pub-list .txt{font-size:14px;color:#999;margin-top:12px;display:block;}
+.pub-list .row{width:0;height:0;border-right:7px solid #f5f5f5;border-top:7px solid transparent;border-bottom:7px solid transparent;display:inline-block;vertical-align:middle;position:absolute;left:-7px;top:50%;margin-top:-7px;}
+.go-publish{width:100%;height:48px;line-height:48px;background:#30c197;color:#fff;text-align:center;position: fixed;left: 0;bottom: 0;}
+.go-publish image{width:21px;height:21px;margin-right:10px;vertical-align:-2px;}

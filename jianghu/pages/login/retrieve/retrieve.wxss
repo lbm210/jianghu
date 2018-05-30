@@ -1,0 +1,9 @@
+.container{width:100%;padding:40rpx 20rpx;}
+.int-box{padding:0 12rpx;border:1rpx solid #7edfb3;border-radius:10rpx;}
+.int-box input{margin-left:10rpx;font-size:28rpx;color:#333;}
+.phone>button{padding:0 12px;height:68rpx;line-height:68rpx;text-align:center;background:#30c180;color:#fff;font-size:24rpx;border-radius:10rpx;}
+.phone{height:100rpx;border-bottom:1rpx solid #7edfb3;}
+.verifying-code{height:100rpx;}
+.phd{color:#30c180;}
+.login-box{padding-top:40rpx;}
+.login{background:#30c180;width:100%;height:80rpx;line-height:80rpx;text-align:center;font-size:30rpx;color:#fff;}

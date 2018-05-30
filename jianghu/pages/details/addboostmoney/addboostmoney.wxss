@@ -1,0 +1,31 @@
+.container{background:#f5f5f5;}
+.money-box{width:100%;background:#30c187;padding:15rpx 26rpx 0;box-sizing:border-box;}
+.money-box>text{font-size:24rpx;line-height:24rpx;color:#fff;}
+.money-ul{width:100%;padding:0 10rpx 18rpx;flex-wrap:wrap;box-sizing:border-box;padding-top:36rpx;}
+.money-item{width:196rpx;height:76rpx;line-height:76rpx;text-align:center;font-size:28rpx;color:#30c187;border-radius:15rpx;background:#fff;margin-bottom:30rpx;}
+.money-item.active{background:#fff6dc;color:#f60;font-weight:bold;}
+.fill-int{width:100%;padding:0 26rpx;box-sizing:border-box;font-size:28rpx;color:#666;margin-bottom:20rpx;background:#fff;}
+.fill-int .fill-item{height:100rpx;line-height:100rpx;border-bottom:1rpx solid #e2e2e2;}
+.fill-int input{text-align:right;height:100rpx;padding-right:20rpx;}
+.fill-int .switch{width:100rpx;height:50rpx;background:#e2e2e2;border-radius:30rpx;}
+.fill-int .txt{text-align:right;color:#ccc;margin-right:20rpx;font-size:28rpx;}
+.fill-int .calc{text-align:right;color:#666;}
+.fill-int .calc text{color:#30c187;font-weight:bold;}
+.fill-int .switch.on{background:#30c187;}
+.fill-int .switch .circular{width:40rpx;height:38rpx;background:#fff;border-radius:50%;position: relative;left:10rpx;}
+.fill-int .switch .circular.on{position: relative;left:50rpx;}
+.fill-int .last-item{border:none;position: relative;padding-top:25rpx;height:auto;}
+.fill-int .last-item textarea{width:100%;height:160rpx;line-height:40rpx;}
+.fill-int .last-item text{position: absolute;bottom:15rpx;right:0;color:#ccc;line-height: 28rpx;}
+.more-list{width:100%;padding:0 26rpx;box-sizing:border-box;background:#fff;margin-bottom:90rpx}
+.more-list .tit{font-size:28rpx;color:#999;padding-top:35rpx;}
+.more-list .item-tit{padding:30rpx 0;width:100%;border-bottom:1rpx solid #e2e2e2;}
+.more-list .item-tit:last-of-type{border-bottom:none;}
+.more-list .item-tit .name{font-weight:bold;}
+.more-list .item-money{position: absolute;right:26rpx;font-size:28rpx;color:#30c080;font-weight:bold;}
+.more-list .item-money text{color:#999;font-weight:normal;}
+.more-list .rankImg{width:76rpx;height:76rpx;margin-right:40rpx;border-radius:50%;}
+.more-list .rank{width:76rpx;height:76rpx;margin-right:40rpx;background:#f0f0f0;color:#666;text-align:center;line-height:76rpx;font-size:32rpx;border-radius:50%;}
+.wallet{width:100%;padding-left:26rpx;box-sizing:border-box;background:#fff;color:#666;font-size:24rpx;position:fixed;bottom:0;left: 0;}
+.wallet .money{font-size:32rpx;color:#ff5633;font-weight:bold;}
+.wallet .payment{width:330rpx;height:96rpx;text-align:center;line-height:96rpx;font-size:32rpx;color:#fff;font-weight:bold;background:#ff5633;}

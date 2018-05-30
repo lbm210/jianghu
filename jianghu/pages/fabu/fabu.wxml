@@ -1,0 +1,35 @@
+<view class="container">
+	<view class="ban-box">
+  	<image class="banner" src="../../images/banner1.jpg" mode="widthFix"/>
+  	<view class="txt-box">
+  		<text class="txt1">寻人 找物 求帮助</text>
+	  	<text class="txt2">十万同城人在此互助</text>
+	  	<text class="txt3">已有<text class="num">{{helpNum}}</text>人获得帮助</text>
+  	</view>
+	</view>
+	<view class="step-tit">轻松三步，快速求助</view>
+  <view class="pub-list">
+    <block wx:for="{{pubList}}">
+      <view class="pub-items pub-items{{index+1}} a-c disflex">
+        <image class="icon" src="{{item.iconUrl}}" mode="aspectFit"/>
+        <view class="txt-box flexn">
+        	<view class="row"></view>
+        	<view class="disflex">
+        		<text class="num">{{item.num}}</text>
+        		<view class="flexn">
+        			<text class="tit">{{item.tit}}</text>
+		        	<text class="txt" wx:if="{{index==0}}">发布救急需求，寻人、找物、求帮助增加200元以上助推金助力扩散</text>
+		        	<text class="txt" wx:elif="{{index==1}}">参与助推的好友将获得助推鼓励金全城爱心人士共同帮您解决问题</text>
+		        	<text class="txt" wx:elif="{{index==2}}">可申请【{{gzh}}】媒体进行头条播报助力您快速解决问题</text>
+        		</view>
+        	</view>
+        </view>
+        <view class="big-row"></view>
+      </view>
+    </block>
+  </view>
+  <view class="go-publish a-c"  bindtap="toPublish">
+  	<image src="../../images/publish-in-airplane.png"/>
+  	<text>发布救急</text>
+  </view>
+</view>

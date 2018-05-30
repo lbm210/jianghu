@@ -1,0 +1,85 @@
+<view class="container">
+  <view class="banner disflex fd-c a-c">
+    <image src="{{userInfo.tx}}" mode="aspectFit"/>
+    <text class="name">{{userInfo.name}}</text>
+    <text class="phone" wx:if="{{userInfo.phone}}">手机：{{userInfo.phone}}</text>
+    <view class="phone-err" wx:if="{{!userInfo.phone}}">手机未认证<text class="iconfont icon-right"></text></view>
+  </view>
+  <view wx:if="{{userInfo.phone}}">
+    <view class="userData disflex">
+      <view class="data-item disflex a-c">
+        <image src="../../images/xin.png" mode="aspectFit"/>
+        <view class="disflex fd-c j-c">
+          <text class="nmb">5次</text>
+          <text>献出爱心</text>
+        </view>
+      </view>
+      <view class="data-item disflex a-c">
+        <image src="../../images/qian.png" mode="aspectFit"/>
+        <view class="disflex fd-c j-c">
+          <text class="nmb">354321元</text>
+          <text>助推奖励</text>
+        </view>
+      </view>
+      <view class="data-item disflex a-c">
+        <image src="../../images/help.png" mode="aspectFit"/>
+        <view class="disflex fd-c j-c">
+          <text class="nmb">556人</text>
+          <text>帮助过我</text>
+        </view>
+      </view>
+      <view class="data-item disflex a-c">
+        <image src="../../images/camera.png" mode="aspectFit"/>
+        <view class="disflex fd-c j-c">
+          <text class="nmb">55324次</text>
+          <text>帖子曝光</text>
+        </view>
+      </view>
+    </view>
+    <view class="jump">
+      <view class="jump-item disflex a-c" id="wallet" bindtap="jumpPage">
+        <text class="i-left iconfont icon-qianbao"></text>
+        <text class="jump-tit">我的钱包</text>
+        <text class="jump-nmb">100.00元</text>
+        <text class="iconfont icon-right"></text>
+      </view>
+      <view class="jump-item disflex a-c" id="card" bindtap="jumpPage">
+        <text class="i-left iconfont icon-tiezi"></text>
+        <text class="jump-tit">我的求助帖</text>
+        <text class="jump-nmb">10条</text>
+        <text class="iconfont icon-right"></text>
+      </view>
+      <view class="jump-item disflex a-c" id="headline" bindtap="jumpPage">
+        <text class="i-left iconfont icon-toutiao"></text>
+        <text class="jump-tit">申请上头条</text>
+        <text class="iconfont icon-right"></text>
+      </view>
+      <view class="jump-item disflex a-c" id="helped" bindtap="jumpPage">
+        <text class="i-left iconfont icon-xin"></text>
+        <text class="jump-tit">帮助过的帖子</text>
+        <text class="jump-nmb">10条</text>
+        <text class="iconfont icon-right"></text>
+      </view>
+      <view class="jump-item disflex a-c" bindtap="telKF">
+        <text class="i-left iconfont icon-erji"></text>
+        <text class="jump-tit">联系客服</text>
+        <text class="iconfont icon-right"></text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- lianxi kefu -->
+<view class="pop-zhezhao" bindtap="pop" wx:if="{{showPop}}"></view> 
+<view class="pop-box disflex j-c a-c" wx:if="{{showPop}}">  
+  <view class="top" wx:if="{{popKF}}">
+    <text class="tit">联系客服</text>
+    <view class="txt-box">
+      <text class="txt">请截图扫描二维码联系客服</text>
+      <text class="txt">客服电话：010-29329392</text>
+    </view>
+    <image src="../../images/er-code.jpg" mode="aspcetFit"/>
+    <view class="btn disflex">
+      <view class="flexn" bindtap="pop">确定</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+<view class="container">
+  <block wx:for="{{itemData}}" wx:key="">
+    <view class="item">
+      <view class="pon-info disflex">
+        <image class="tx" src="{{item.txUrl}}" mode="aspectFit"/>
+        <view class="disflex fd-c f-c">
+          <view class="nm-t">
+            <text class="name">{{item.name}}</text>
+            <text> 加助支持 </text>
+            <text class="money">{{item.money}}</text>
+          </view>
+          <text class="time">{{item.time}}</text>
+        </view>
+        <button class="iconfont icon-xiaoxi" bindgetuserinfo="bindGetUserInfo" id="{{item.id}}" plain="true" bindtap="reply" open-type="getUserInfo"></button>
+      </view>
+      <text class="item-text">{{item.text}}</text>
+      <view class="reply" wx:if="{{item.replyData}}">
+        <block wx:for="{{item.replyData}}" wx:key="">
+          <view class="reply-other">
+            <text class="rep-name">{{item.name}}：</text>
+              {{item.text}}
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+  <view style="display:{{display}}" class="reply-int-box disflex a-c">
+    <input type="text" class="reply-int flexn" focus="{{focus}}" bindblur="intHide" bindinput="setComment" confirm-type="评论"/>
+    <view bindtap="comment">
+      评论
+    </view>
+  </view>
+</view>

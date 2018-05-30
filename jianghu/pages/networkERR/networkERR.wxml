@@ -1,0 +1,4 @@
+<view class="container a-c">
+  <image src="../../images/yichang.png" mode="widthFix"/>
+  <text>您的网络不稳定哦，请刷新重试~</text>
+</view>

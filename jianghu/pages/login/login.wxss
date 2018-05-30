@@ -1,0 +1,11 @@
+.container{width:100%;padding:40rpx 20rpx;}
+.int-box{padding:0 12rpx;border:1rpx solid #7edfb3;border-radius:10rpx;}
+.int-box input{margin-left:10rpx;font-size:28rpx;color:#333;}
+.int-box text{color:#30c180;}
+.username{height:100rpx;border-bottom:1rpx solid #7edfb3;}
+.password{height:100rpx;}
+.phd{color:#30c180;}
+.login-box{padding-top:40rpx;}
+.login{background:#30c180;width:100%;height:80rpx;line-height:80rpx;text-align:center;font-size:30rpx;color:#fff;}
+.forget{font-size:30rpx;color:#30c180;line-height:80rpx;}
+.register{width:256rpx;height:64rpx;border:1rpx solid #30c180;line-height:64rpx;text-align:center;font-size:28rpx;color:#30c180;margin:10rpx auto;border-radius:10rpx;}

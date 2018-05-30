@@ -1,0 +1,23 @@
+/** 求助列表 */
+.info-list{width:100%;padding:40rpx 26rpx;box-sizing: border-box;background:#fff;margin-bottom:20rpx;}
+.info-list:last-of-type{margin-bottom:0}
+.info-list.p0{padding-top:0;}
+.item-tit{position: relative;width:100%;}
+.item-tit .tx{width:76rpx;height:76rpx;margin-right:16rpx;border-radius:50%;}
+.item-tit text{width:100%;}
+.item-tit .name{font-size:28rpx;color:#333;margin-bottom:6rpx;}
+.item-tit .time{font-size:20rpx;color:#ccc;}
+.item-btn{position: absolute;top: 0;right: 0;width:128rpx;height:48rpx;line-height:48rpx;text-align:center;background: #ff7033;color:#fff;border-radius:25rpx;font-size:28rpx;}
+.btn-end{background:#ffac99;}
+.txt-tit{font-size:28rpx;color:#333;font-weight:bold;line-height:40rpx;}
+.in-img{width:100%;margin-top:20rpx;}
+.hp-pel{padding-top:20rpx;position: relative;height:48rpx;}
+.hp-nbm{position: absolute;top: 20rpx;right: 0;line-height:48rpx;font-size:20rpx;color:#999;}
+.hp-nbm text{color:#f64436}
+.hp-item, .hp-more{width:48rpx;height:48rpx;border-radius:50%;margin-right:20rpx;}
+.hp-more{line-height:24rpx;background:#f5f5f5;text-align: center;color:#999;}
+.pl{width:100%;}
+/** 底部导航 */
+.contact{width:100rpx;position:fixed;right:20rpx;bottom:40rpx;}
+.contact .iconfont{font-size:42rpx;}
+.contact>view{width:100rpx;height:100rpx;font-size:22rpx;color:#fff;border-radius:50%;background:rgba(0,0,0,0.6);margin-bottom:15rpx;}

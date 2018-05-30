@@ -1,0 +1,5 @@
+<import src="../../template/template" />
+<block wx:for="{{infoData}}" wx:key="">
+  <template is="list-item" data="{{...item}}">
+  </template>
+</block>

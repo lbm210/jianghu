@@ -1,0 +1,26 @@
+<import src="../../template/template" />
+<view class="container">
+  <view class="banner disflex fd-c a-c">
+    <text>我的零钱</text>
+    <text wx:if="{{false}}">￥391.00</text>
+    <text wx:elif="{{true}}">￥0</text>
+    <text>去APP体现</text>
+    <text>请下载【白城在线】城市通APP提现</text>
+  </view>
+  <view class="profit" wx:if="{{false}}">
+    <block wx:for="{{profitData}}" wx:key="">
+      <view class="profit-item disflex j-b a-c">
+        <view class="item-left">
+          <view class="item-txt">{{item.txt}}</view>
+          <view class="time">{{item.time}}</view>
+        </view>
+        <text class="item-nmb">+{{item.money}}元</text>
+      </view>
+    </block>
+  </view>
+  <view class="empty disflex fd-c a-c" wx:elif="{{true}}">
+    <image src="../../../images/wallet.png" mode="widthFix"/>
+    <text>暂无数据</text>
+  </view>
+  <template is="tab-list"></template>
+</view>
